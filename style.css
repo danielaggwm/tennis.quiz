@@ -1,0 +1,286 @@
+header {
+    background-color: #14141e;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #ddd;
+    height: 5px;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background-color: #4CAF50;
+}
+
+#quiz-container {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+#result-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+.question-container {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+/* Styling for the question text */
+.question-container h2 {
+    font-size: 20px; /* Adjust the font size as needed */
+    color: #333; /* Adjust the text color */
+    padding: 15px;
+    text-align: center;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.option {
+    background-color: rgba(255, 255, 255, 0.847); 
+    border: 1px solid #ccc;
+    border-radius: 10px;     /* Rounded corners */
+    padding: 15px;           /* More padding for a nicer look */
+    margin: 10px 0;          /* Space between options */
+    font-size: 18px;         /* Slightly larger font */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover effect for buttons */
+button.option:hover {
+    background-color: #f0f8ff; 
+}
+
+/* Next question button */
+#next-btn {
+    background-color: #F2F2F2;
+    color: black;
+    border: 1px solid #8d8d8d;
+    border-radius: 10px;     
+    padding: 15px;           
+    width: 20%;              
+    font-size: 16px;        
+    cursor: pointer;
+    margin: 20px auto;       /* Center the button with auto margins */
+    display: block;          /* Ensure it's a block-level element for centering */
+    text-align: center;      /* Center the text inside the button */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover effect for the Next Question button */
+#next-btn:hover {
+    background-color: #E6E6E6;
+}
+
+/* Restart button */
+#restart-btn {
+    background-color: rgba(255, 255, 255, 0.847); 
+    border: 1px solid #ccc;
+    color: black;
+    border-radius: 10px;     
+    padding: 15px;           
+    width: 40%;             
+    font-size: 18px;        
+    cursor: pointer;
+    margin: 20px auto;       
+    display: flex;           
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;      
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover effect for Restart button */
+#restart-btn:hover {
+    background-color: #E6E6E6;
+}
+
+
+/* Explanation */
+p.explanation {
+    display: none;
+    color: #808080;
+}
+
+/* Status bar containing question number and score */
+.status-bar {
+    display: flex;
+    justify-content: space-between; /* Distributes items with space between */
+    align-items: center;
+    margin-bottom: 20px; /* Space between status bar and question */
+    padding: 10px; /* Padding around the status bar */
+    background-color: #f9f9f9; /* Light background for the status bar */
+    border-radius: 10px; /* Rounded corners for the status bar */
+    border: 1px solid #ccc; /* Border for the status bar */
+    position: relative;
+}
+
+#question-status {
+    font-size: 16px;
+    color: #808080;
+    position: absolute; 
+    left: 50%; /* so that it is centered */
+    transform: translateX(-50%); 
+}
+
+#score-box {
+    font-size: 16px;
+    background-color: #faf0db; 
+    border: 1px solid #f8d48e; 
+    border-radius: 5px; 
+    padding: 5px 10px; 
+    color: #ca911e; 
+}
+
+/* Circular progress indicator */
+.progress-circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+}
+
+.progress-circle-svg {
+    transform: rotate(-90deg);
+}
+
+.progress-circle-bg,
+.progress-circle-fg {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+}
+
+.progress-circle-bg {
+    stroke: #e0e0e0;
+}
+
+.progress-circle-fg {
+    stroke: #4CAF50; /* Green color for progress */
+    stroke-dasharray: 282.6; /* 2 * π * 45 */
+    stroke-dashoffset: 282.6; /* Full circle */
+    transition: stroke-dashoffset 1s;
+}
+
+.score-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #14141e;
+}
+
+/* Final score heading */
+#result-container h2 {
+    color: #14141e;
+    margin-top: 40px;
+    margin-bottom: 40px; 
+}
+
+/* Circle progress */
+.circle-container {
+    margin-bottom: 20px; 
+}
+
+/* Restart button */
+#restart-btn {
+    margin-top: 40px; 
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Prevent the page from scrolling due to falling tennis balls */
+}
+
+#home-page {
+    position: relative;
+    z-index: 10; /* Keep the content on top */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh;         
+    text-align: center;      
+    padding: 20px; /* Add some padding to the content */
+    border-radius: 10px; /* Optional: rounded corners for a softer look */
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Make sure the canvas is behind the home page content */
+    width: 100vw;
+    height: 100vh;
+}
+
+
+#home-page h2 {
+    font-size: 30px;          /* Adjust as needed */
+    margin-bottom: 5px;      /* Space between the heading and the paragraph */
+    color: white;
+}
+
+#home-page p {
+    font-size: 18px;         
+    margin-bottom: 25px;   
+    color: white;   
+}
+
+#home-page a {
+    text-decoration: none;    
+}
+
+#start-quiz-btn {
+    background-color: rgba(255, 255, 255, 0.847); 
+    border: 1px solid #ccc;
+    color: black;
+    border-radius: 10px;     
+    padding: 15px;           
+    width: 150px;            /* Adjust width as needed */
+    font-size: 18px;        
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+    text-align: center;      /* Center text inside the button */
+}
+
+#start-quiz-btn:hover {
+    background-color: #f3fec1; /* Adjust hover color if needed */
+}
+
+.progress-circle-fg {
+    stroke: #4CAF50; /* Green color for progress */
+    stroke-dasharray: 282.6; /* 2 * π * 45 */
+    stroke-dashoffset: 282.6; /* Full circle */
+    transition: stroke-dashoffset 0.3s ease-out; /* Smooth transition */
+}

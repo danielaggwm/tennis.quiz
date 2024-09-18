@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis Quiz</title>
+    <link href="style.css" rel="stylesheet">
+    <style>
+        canvas {
+            display: block; /* Ensure canvas takes up the full window without scrollbars */
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    
+    <section id="home-page">
+        <h2>how much do you know about tennis?</h2>
+        <p>test your knowledge by taking this quiz</p>
+        <a href="index.html">
+            <button id="start-quiz-btn">Start</button>
+        </a>
+    </section>
+
+    <script>
+        // Create engine
+        let engine = Matter.Engine.create();
+
+        // Set canvas to full screen width and height
+        let render = Matter.Render.create({
+            element: document.body,
+            engine: engine,
+            options: {
+                width: window.innerWidth,  // Full width
+                height: window.innerHeight, // Full height
+                wireframes: false           // Turn off wireframes for solid shapes
+            }
+        });
+
+        // Create ground
+        let ground = Matter.Bodies.rectangle(window.innerWidth / 2, window.innerHeight - 50, window.innerWidth, 60, { 
+            isStatic: true 
+        });
+
+        // Load tennis ball texture
+        let ballTexture = 'tennis_ball.png';
+
+        // Function to create a tennis ball
+        function createTennisBall(x, y) {
+            return Matter.Bodies.circle(x, y, 20, { // Smaller radius for the balls
+                restitution: 0.9, // Make the balls bouncy
+                render: {
+                    sprite: {
+                        texture: ballTexture,
+                        xScale: 0.1, // Scale down the image (adjust as needed)
+                        yScale: 0.1
+                    }
+                }
+            });
+        }
+
+        // Create multiple tennis balls
+        let tennisBalls = [];
+        for (let i = 0; i < 10; i++) {
+            let x = Math.random() * window.innerWidth; // Random horizontal position
+            let y = Math.random() * 200; // Random starting height
+            tennisBalls.push(createTennisBall(x, y));
+        }
+
+        // Mouse control
+        let mouse = Matter.Mouse.create(render.canvas);
+        let mouseConstraint = Matter.MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+                render: { visible: false }
+            }
+        });
+        render.mouse = mouse;
+
+        // Add objects to the world
+        Matter.World.add(engine.world, [...tennisBalls, ground, mouseConstraint]);
+
+        // Run the engine and renderer
+        Matter.Engine.run(engine);
+        Matter.Render.run(render);
+
+        // Handle resizing of the window
+        window.addEventListener('resize', function() {
+            render.canvas.width = window.innerWidth;
+            render.canvas.height = window.innerHeight;
+
+            // Remove the old ground
+            Matter.World.remove(engine.world, ground);
+
+            // Create a new ground
+            ground = Matter.Bodies.rectangle(window.innerWidth / 2, window.innerHeight - 50, window.innerWidth, 60, { 
+                isStatic: true 
+            });
+
+            // Add the new ground
+            Matter.World.add(engine.world, ground);
+        });
+    </script>
+</body>
+</html>

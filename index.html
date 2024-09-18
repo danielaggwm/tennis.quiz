@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis Quiz</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h2>tennis quiz</h2>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress"></div>
+    </div>
+
+    <!-- Quiz Container -->
+    <section id="quiz-container">
+        <div class="question-container">
+            <div>
+                <span id="question-status">Question 1 of 10</span>
+                <span id="score-box">Score: <span class="score">0</span></span>
+            </div>
+
+            <h2>Question will appear here</h2>
+
+            <div id="options">
+                <!-- Options will be dynamically generated here -->
+            </div>
+
+            <p class="explanation" style="display:none;">Explanation will appear here</p>
+            <button id="next-btn" style="display:none;">Next</button>
+        </div>
+    </section>
+
+    <!-- Final Score Display -->
+    <section id="result-container" style="display:none;">
+        <h2>Your final score is:</h2>
+        <div class="progress-circle">
+            <svg class="progress-circle-svg" viewBox="0 0 100 100">
+                <circle class="progress-circle-bg" cx="50" cy="50" r="45" />
+                <circle class="progress-circle-fg" cx="50" cy="50" r="45" />
+            </svg>
+            <div class="score-text">1/5</div>
+        </div>
+        <button id="restart-btn">Restart</button>
+    </section>
+
+    <footer>
+    </footer>
+</body>
+</html>
