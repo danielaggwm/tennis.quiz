@@ -1,15 +1,13 @@
-header {
-    background-color: #14141e;
-    color: white;
-    padding: 10px;
+.header-block {
     width: 100%;
-    text-align: center;
+    background-color: #14141e;
+    height: 70px;
 }
 
 .progress-bar {
     width: 100%;
     background-color: #ddd;
-    height: 5px;
+    height: 6px;
 }
 
 .progress {
@@ -156,8 +154,8 @@ p.explanation {
 /* Circular progress indicator */
 .progress-circle {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin: 20px auto;
 }
 
@@ -188,16 +186,16 @@ p.explanation {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    color: #14141e;
+    color: black;
 }
 
 /* Final score heading */
 #result-container h2 {
     color: #14141e;
-    margin-top: 40px;
-    margin-bottom: 40px; 
+    margin-top: 60px;
+    margin-bottom: 60px; 
 }
 
 /* Circle progress */
@@ -207,7 +205,7 @@ p.explanation {
 
 /* Restart button */
 #restart-btn {
-    margin-top: 40px; 
+    margin-top: 60px; 
 }
 
 body {
@@ -276,6 +274,7 @@ canvas {
 
 #start-quiz-btn:hover {
     background-color: #f3fec1; /* Adjust hover color if needed */
+    border-color: #c2cb96;
 }
 
 .progress-circle-fg {
